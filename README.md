@@ -8,8 +8,7 @@ Extensão para Firefox que remove o Copilot da interface do GitHub:
   arquivos e na aba **Files changed** dos pull requests;
 - a seção "Copilot can watch this pull request", com o botão **Watch and fix**,
   na caixa de merge dos pull requests;
-- links para `/copilot`, opções como "Assign to Copilot", banners do Copilot e
-  elementos `<copilot-*>`.
+- links para `/copilot`, opções como "Assign to Copilot" e banners do Copilot.
 
 As páginas de configuração (`/settings/copilot`) continuam acessíveis, para que
 você ainda consiga desligar recursos do Copilot na conta.

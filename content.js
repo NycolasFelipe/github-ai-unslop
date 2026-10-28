@@ -4,16 +4,18 @@ const STYLE_ID = "github-ai-unslop-style";
 const HIDDEN_ATTR = "data-unslop-hidden";
 
 // Elements GitHub tags with stable Copilot markers. Kept narrow on purpose:
-// broad matches like [class*=copilot] on containers could hide whole pages.
+// GitHub also puts "copilot" on wrappers of regular features, e.g. the file
+// view code sits in #copilot-button-positioner and the PR comment field has
+// data-target="copilot-comment-mention-telemetry.…", so broad id, class or
+// data-target matches would hide them.
 const SELECTORS = [
   // Header button, chat panel, dashboard entrypoint and other React islands
   ".AppHeader-CopilotChat",
   "react-partial[partial-name*='copilot' i]",
   "[data-testid*='copilot' i]",
-  "[data-target*='copilot' i]",
   "button[class*='copilot' i]",
   "a[class*='copilot' i]",
-  "[id^='copilot-' i]",
+  "#copilot-code-review-limits-banner",
   "[class*='CopilotItems-module']",
   "button[aria-label*='Copilot']",
   "a[aria-label*='Copilot']",
@@ -93,8 +95,10 @@ function setEnabled(enabled) {
   }
 }
 
+// <copilot-*> custom elements are not matched on purpose: GitHub wraps whole
+// features in them, e.g. <copilot-comment-mention-telemetry> around the PR
+// comment box.
 function shouldHide(el) {
-  if (el.localName.startsWith("copilot-")) return true;
   if (!el.matches(CANDIDATES)) return false;
   if (el.closest(USER_CONTENT)) return false;
   const label = el.textContent.trim();
@@ -125,7 +129,7 @@ function scan(node) {
 
   if (node !== element) return;
   check(element);
-  for (const el of element.querySelectorAll("*")) check(el);
+  for (const el of element.querySelectorAll(CANDIDATES)) check(el);
 }
 
 // GitHub navigates with Turbo and renders most UI with React, so new nodes

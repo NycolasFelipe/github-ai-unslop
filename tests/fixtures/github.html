@@ -36,7 +36,12 @@
     <button id="blob-agent" data-expect="hidden"><svg class="octicon octicon-agent" width="16" height="16"></svg></button>
     <a href="/owner/repo/raw/main/file.js" id="blob-raw" data-expect="visible">Raw</a>
   </div>
-  <div id="copilot-button-positioner" data-expect="hidden">positioner</div>
+  <!-- The code itself lives inside a Copilot-named wrapper -->
+  <div id="copilot-button-positioner" class="position-relative" data-expect="visible">
+    <div class="react-code-lines">
+      <div class="react-code-text" id="code-line" data-expect="visible">const answer = 42;</div>
+    </div>
+  </div>
 
   <!-- Pull request "Files changed" toolbar -->
   <div class="pr-toolbar">
@@ -78,7 +83,10 @@
     <li id="menu-ask-item" data-expect="hidden"><span role="menuitem" id="menu-ask" data-expect="hidden">Ask Copilot</span></li>
     <li id="menu-edit-item" data-expect="visible"><span role="menuitem" id="menu-edit" data-expect="visible">Edit</span></li>
   </ul>
-  <copilot-chat-panel id="custom-element" data-expect="hidden">panel</copilot-chat-panel>
+  <!-- GitHub wraps the whole PR comment box in a Copilot telemetry element -->
+  <copilot-comment-mention-telemetry id="comment-box-wrapper" data-expect="visible">
+    <textarea id="comment-box" data-expect="visible" data-target="copilot-comment-mention-telemetry.textarea" placeholder="Add a comment"></textarea>
+  </copilot-comment-mention-telemetry>
 
   <!-- Links to Copilot pages -->
   <a href="https://github.com/features/copilot" id="link-features" data-expect="hidden">GitHub Copilot</a>
