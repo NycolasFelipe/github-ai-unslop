@@ -69,7 +69,8 @@ npm test
 O Firefox é procurado no `PATH`. Para usar outro, defina `FIREFOX_BIN`.
 
 Quando o GitHub mudar a interface, adicione o novo elemento à página de teste
-com `data-expect="hidden"` antes de mexer nos seletores.
+com `data-expect="hidden"` antes de mexer nos seletores. O GitHub Actions roda
+o lint e os testes a cada push.
 
 ## Instalar para testar
 
