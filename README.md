@@ -55,3 +55,8 @@ em `about:config` e instalar o `.zip` gerado.
 
 Clique no ícone da extensão e use a caixa de seleção. A mudança vale na hora
 para todas as abas.
+
+## Créditos
+
+O robô do ícone é o `copilot` do [Primer Octicons](https://github.com/primer/octicons),
+© GitHub Inc., distribuído sob a licença MIT.
