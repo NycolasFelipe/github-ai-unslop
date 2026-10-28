@@ -103,3 +103,7 @@ para todas as abas.
 
 O robô do ícone é o `copilot` do [Primer Octicons](https://github.com/primer/octicons),
 © GitHub Inc., distribuído sob a licença MIT.
+
+## Licença
+
+[MIT](LICENSE)
