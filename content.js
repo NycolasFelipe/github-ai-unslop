@@ -13,9 +13,27 @@ const SELECTORS = [
   "[data-target*='copilot' i]",
   "button[class*='copilot' i]",
   "a[class*='copilot' i]",
+  "[id^='copilot-' i]",
+  "[class*='CopilotItems-module']",
   "button[aria-label*='Copilot']",
   "a[aria-label*='Copilot']",
   "[role='dialog'][aria-label*='Copilot']",
+  "button[aria-label='Open agents panel']",
+
+  // Icon-only buttons (e.g. the PR "Files changed" toolbar) carry nothing but
+  // the Copilot, agent or Copilot Spaces octicon, so match the control that
+  // wraps it.
+  ":is(button, a, summary, [role='menuitem'], [role='option'], [role='tab']):has(svg:is(.octicon-copilot, .octicon-agent, .octicon-space))",
+  "svg:is(.octicon-copilot, .octicon-agent, .octicon-space)",
+
+  // Repository "Agents" tab and the dashboard "Agent sessions" list
+  "a[data-tab-item='agents']",
+  "li:has(> a[data-tab-item='agents'])",
+  "react-partial[partial-name='dashboard-lists'] [class^='List__'] > div:has(a[href^='/copilot'])",
+
+  // Pull request merge box sections such as "Copilot can watch this pull
+  // request" with its "Watch and fix" button
+  "[data-testid='mergebox-border-container'] > section:has(svg.octicon-copilot)",
 
   // Links to Copilot pages (chat, agents, spaces, marketing). Exact prefixes
   // so orgs like github.com/copilot-extensions stay visible.

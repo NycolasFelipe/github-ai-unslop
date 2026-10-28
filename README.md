@@ -1,8 +1,15 @@
 # GitHub AI Unslop
 
-Extensão para Firefox que remove o Copilot da interface do GitHub: o botão do
-cabeçalho, o painel de chat, a caixa "Ask Copilot" do dashboard, links para
-`/copilot`, opções como "Assign to Copilot" e elementos `<copilot-*>`.
+Extensão para Firefox que remove o Copilot da interface do GitHub:
+
+- os botões do Copilot e do painel de agentes no cabeçalho;
+- a aba **Agents** dos repositórios e a seção **Agent sessions** do dashboard;
+- os botões do Copilot, de agentes e de "Add to space" na visualização de
+  arquivos e na aba **Files changed** dos pull requests;
+- a seção "Copilot can watch this pull request", com o botão **Watch and fix**,
+  na caixa de merge dos pull requests;
+- links para `/copilot`, opções como "Assign to Copilot", banners do Copilot e
+  elementos `<copilot-*>`.
 
 As páginas de configuração (`/settings/copilot`) continuam acessíveis, para que
 você ainda consiga desligar recursos do Copilot na conta.
