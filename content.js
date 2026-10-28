@@ -24,13 +24,13 @@ const SELECTORS = [
 
   // Icon-only buttons (e.g. the PR "Files changed" toolbar) carry nothing but
   // the Copilot, agent or Copilot Spaces octicon, so match the control that
-  // wraps it.
-  ":is(button, a, summary, [role='menuitem'], [role='option'], [role='tab']):has(svg:is(.octicon-copilot, .octicon-agent, .octicon-space))",
+  // wraps it. Repository tabs are left to COLLAPSED below.
+  ":is(button, a:not([data-tab-item]), summary, [role='menuitem'], [role='option'], [role='tab']):has(svg:is(.octicon-copilot, .octicon-agent, .octicon-space))",
   "svg:is(.octicon-copilot, .octicon-agent, .octicon-space)",
 
-  // Repository "Agents" tab and the dashboard "Agent sessions" list
-  "a[data-tab-item='agents']",
-  "li:has(> a[data-tab-item='agents'])",
+  // "Agents" entry in the repository tab bar's "More" menu and the dashboard
+  // "Agent sessions" list
+  "li:has(> a[role='menuitem'][data-tab-item='agents'])",
   "react-partial[partial-name='dashboard-lists'] [class^='List__'] > div:has(a[href^='/copilot'])",
 
   // Pull request merge box sections such as "Copilot can watch this pull
@@ -47,6 +47,14 @@ const SELECTORS = [
   "a[href^='https://github.com/copilot?']",
   "a[href*='/features/copilot']",
   "li:has(> a[href='/copilot'], > a[href^='/copilot/'], > a[href*='/features/copilot'])",
+];
+
+// The repository tab bar moves every tab it cannot see into a "More" menu,
+// so a display:none tab makes an empty "More" button appear. These are
+// shrunk to nothing in place instead, which the tab bar still counts as
+// fitting, and taken out of the flex flow so they leave no gap.
+const COLLAPSED = [
+  "li:has(> a[data-tab-item='agents']:not([role='menuitem']))",
 ];
 
 // Interactive elements whose visible label may mention Copilot without any
@@ -76,6 +84,12 @@ function buildStyle() {
   const rules = SELECTORS.map(
     (selector) => `${selector}:not(:is(${USER_CONTENT}) *) { display: none !important; }`,
   );
+  for (const selector of COLLAPSED) {
+    rules.push(
+      `${selector} { position: absolute !important; visibility: hidden !important; width: 0 !important;` +
+        ` min-width: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important; }`,
+    );
+  }
   rules.push(`[${HIDDEN_ATTR}] { display: none !important; }`);
 
   const style = document.createElement("style");

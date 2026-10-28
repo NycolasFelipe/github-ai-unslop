@@ -22,9 +22,14 @@
 
   <!-- Repository navigation -->
   <nav aria-label="Repository">
-    <ul>
-      <li id="nav-agents-item" data-expect="hidden"><a data-tab-item="agents" id="nav-agents" data-expect="hidden" href="/owner/repo/agents?author=me">Agents</a></li>
+    <ul role="list" style="display: flex; gap: 8px">
+      <li id="nav-agents-item" data-expect="hidden"><a data-tab-item="agents" id="nav-agents" data-expect="hidden" href="/owner/repo/agents?author=me"><svg class="octicon octicon-agent" width="16" height="16"></svg>Agents</a></li>
       <li id="nav-actions-item" data-expect="visible"><a data-tab-item="actions" id="nav-actions" data-expect="visible" href="/owner/repo/actions">Actions</a></li>
+    </ul>
+    <!-- "More" menu of tabs that did not fit -->
+    <ul class="prc-ActionList-ActionList-rPFF2">
+      <li role="none" class="prc-UnderlineNav-OverflowMenuItem-7SG7M" id="more-agents-item" data-expect="hidden"><a role="menuitem" data-tab-item="agents" href="/owner/repo/agents?author=me">Agents</a></li>
+      <li role="none" class="prc-UnderlineNav-OverflowMenuItem-7SG7M" id="more-insights-item" data-expect="visible"><a role="menuitem" data-tab-item="insights" href="/owner/repo/pulse">Insights</a></li>
     </ul>
   </nav>
 

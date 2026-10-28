@@ -66,7 +66,8 @@ async function openFixture({ storage = {} } = {}) {
 
 const settle = (page) => page.evaluate(() => new Promise((resolve) => setTimeout(resolve, 50)));
 
-const isVisible = (page, id) => page.evaluate((id) => document.getElementById(id).checkVisibility(), id);
+const isVisible = (page, id) =>
+  page.evaluate((id) => document.getElementById(id).checkVisibility({ visibilityProperty: true }), id);
 
 const expected = (page, state) =>
   page.evaluate((state) => [...document.querySelectorAll(`[data-expect="${state}"]`)].map((el) => el.id), state);
@@ -104,6 +105,27 @@ describe("initial page", () => {
   it("hides elements before page scripts run", async () => {
     const page = await openFixture();
     assert.deepEqual(await page.evaluate(() => window.__hiddenDuringParse), [true, true]);
+    await page.close();
+  });
+
+  // The tab bar moves tabs that are not rendered into its "More" menu, so a
+  // display:none Agents tab brings up an empty "More" button.
+  it("collapses the Agents tab in place instead of removing it", async () => {
+    const page = await openFixture();
+    const tab = await page.evaluate(() => {
+      const li = document.getElementById("nav-agents-item");
+      const style = getComputedStyle(li);
+      return {
+        display: style.display,
+        position: style.position,
+        width: li.getBoundingClientRect().width,
+        anchorDisplay: getComputedStyle(li.firstElementChild).display,
+      };
+    });
+    assert.notEqual(tab.display, "none");
+    assert.notEqual(tab.anchorDisplay, "none");
+    assert.equal(tab.position, "absolute");
+    assert.equal(tab.width, 0);
     await page.close();
   });
 
