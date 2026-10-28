@@ -14,6 +14,30 @@ Extensão para Firefox que remove o Copilot da interface do GitHub:
 As páginas de configuração (`/settings/copilot`) continuam acessíveis, para que
 você ainda consiga desligar recursos do Copilot na conta.
 
+## Antes e depois
+
+Os elementos destacados em vermelho são os que a extensão remove.
+
+**Cabeçalho e navegação do repositório**
+
+![Cabeçalho antes](docs/prints/cabecalho-antes.png)
+![Cabeçalho depois](docs/prints/cabecalho-depois.png)
+
+**Visualização de arquivo**
+
+![Barra do arquivo antes](docs/prints/arquivo-antes.png)
+![Barra do arquivo depois](docs/prints/arquivo-depois.png)
+
+**Pull request, aba Files changed**
+
+![Pull request antes](docs/prints/pull-request-antes.png)
+![Pull request depois](docs/prints/pull-request-depois.png)
+
+**Pull request, caixa de merge**
+
+![Caixa de merge antes](docs/prints/merge-box-antes.png)
+![Caixa de merge depois](docs/prints/merge-box-depois.png)
+
 ## Como funciona
 
 `content.js` roda em `github.com` e `gist.github.com` desde o início do
