@@ -1,0 +1,25 @@
+{
+  "name": "github-ai-unslop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "web-ext run",
+    "lint": "web-ext lint",
+    "build": "web-ext build",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^24.43.1",
+    "web-ext": "^10.8.0"
+  },
+  "webExt": {
+    "ignoreFiles": [
+      "docs",
+      "tests",
+      "package.json",
+      "package-lock.json",
+      "README.md"
+    ]
+  }
+}

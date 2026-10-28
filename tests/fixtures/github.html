@@ -1,0 +1,116 @@
+<!doctype html>
+<!--
+  Trimmed-down copies of the GitHub markup the extension targets, captured
+  from github.com. Elements with data-expect="hidden" must disappear and
+  data-expect="visible" must stay on screen.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GitHub fixture</title>
+</head>
+<body>
+  <!-- Global header -->
+  <header>
+    <div class="AppHeader-CopilotChat" id="header-copilot-group" data-expect="hidden">
+      <a href="/copilot" id="header-copilot-link" data-expect="hidden" aria-label="Chat with Copilot">chat</a>
+      <button class="AppHeader-button copilot-chat-dropdown" id="header-copilot-menu" data-expect="hidden" aria-label="Open Copilot…">menu</button>
+    </div>
+    <button class="prc-Button-ButtonBase-9n-Xk appHeaderButton" id="header-agents" data-expect="hidden" aria-label="Open agents panel">agents</button>
+    <button class="prc-Button-ButtonBase-9n-Xk" id="header-issues" data-expect="visible" aria-label="Your issues">issues</button>
+  </header>
+
+  <!-- Repository navigation -->
+  <nav aria-label="Repository">
+    <ul>
+      <li id="nav-agents-item" data-expect="hidden"><a data-tab-item="agents" id="nav-agents" data-expect="hidden" href="/owner/repo/agents?author=me">Agents</a></li>
+      <li id="nav-actions-item" data-expect="visible"><a data-tab-item="actions" id="nav-actions" data-expect="visible" href="/owner/repo/actions">Actions</a></li>
+    </ul>
+  </nav>
+
+  <!-- File view toolbar -->
+  <div class="BlobViewHeader-module_OdKveq_Box_3">
+    <button id="blob-space" data-expect="hidden" aria-labelledby="tip-space"><svg class="octicon octicon-space" width="16" height="16"></svg></button>
+    <span id="tip-space" hidden>Add to space</span>
+    <button data-testid="copilot-ask-menu" id="blob-copilot" data-expect="hidden"><svg class="octicon octicon-copilot" width="16" height="16"></svg></button>
+    <button id="blob-agent" data-expect="hidden"><svg class="octicon octicon-agent" width="16" height="16"></svg></button>
+    <a href="/owner/repo/raw/main/file.js" id="blob-raw" data-expect="visible">Raw</a>
+  </div>
+  <div id="copilot-button-positioner" data-expect="hidden">positioner</div>
+
+  <!-- Pull request "Files changed" toolbar -->
+  <div class="pr-toolbar">
+    <button id="pr-copilot" data-expect="hidden"><svg class="octicon octicon-copilot" width="16" height="16"></svg></button>
+    <button id="pr-settings" data-expect="visible"><svg class="octicon octicon-gear" width="16" height="16"></svg></button>
+  </div>
+  <div id="copilot-code-review-limits-banner" data-expect="hidden">Copilot code review limits</div>
+
+  <!-- Pull request merge box -->
+  <div class="border" data-testid="mergebox-border-container">
+    <section id="mergebox-checks" data-expect="visible">All checks have passed</section>
+    <section id="mergebox-copilot" data-expect="hidden">
+      <svg class="octicon octicon-copilot" width="16" height="16"></svg>
+      Copilot can watch this pull request
+      <button id="mergebox-watch" data-expect="hidden">Watch and fix</button>
+    </section>
+    <section id="mergebox-merge" data-expect="visible"><button id="mergebox-merge-button" data-expect="visible">Enable auto-merge (squash)</button></section>
+  </div>
+
+  <!-- Dashboard -->
+  <react-partial partial-name="copilot-dashboard-entrypoint" id="dashboard-ask" data-expect="hidden">Ask Copilot</react-partial>
+  <react-partial partial-name="dashboard-lists">
+    <div class="List__Eu5BiA">
+      <div class="container__kYmfXz" id="dashboard-sessions" data-expect="hidden">
+        <h2>Agent sessions</h2>
+        <a href="/copilot/agents" id="dashboard-sessions-link" data-expect="hidden">View all sessions</a>
+      </div>
+      <div class="container__kYmfXz" id="dashboard-prs" data-expect="visible">
+        <h2>Pull requests</h2>
+        <a href="/pulls" data-expect="visible" id="dashboard-prs-link">View all</a>
+      </div>
+    </div>
+  </react-partial>
+
+  <!-- Menus and controls labelled only by text -->
+  <button id="assign-copilot" data-expect="hidden">Assign to Copilot</button>
+  <button id="assign-me" data-expect="visible">Assign to me</button>
+  <ul role="menu">
+    <li id="menu-ask-item" data-expect="hidden"><span role="menuitem" id="menu-ask" data-expect="hidden">Ask Copilot</span></li>
+    <li id="menu-edit-item" data-expect="visible"><span role="menuitem" id="menu-edit" data-expect="visible">Edit</span></li>
+  </ul>
+  <copilot-chat-panel id="custom-element" data-expect="hidden">panel</copilot-chat-panel>
+
+  <!-- Links to Copilot pages -->
+  <a href="https://github.com/features/copilot" id="link-features" data-expect="hidden">GitHub Copilot</a>
+  <a href="https://github.com/copilot/spaces" id="link-spaces" data-expect="hidden">Spaces</a>
+  <a href="/copilot?tab=chat" id="link-query" data-expect="hidden">Chat</a>
+
+  <!-- Look like Copilot but are not Copilot UI -->
+  <a href="/settings/copilot" id="link-settings" data-expect="visible">Copilot settings</a>
+  <a href="https://github.com/copilot-extensions" id="link-org" data-expect="visible">copilot-extensions</a>
+  <a href="/github/copilot.vim" id="link-repo" data-expect="visible">github/copilot.vim</a>
+  <a href="/owner/repo/commit/abc123" id="commit-message" data-expect="visible">Remove Copilot from the UI</a>
+  <summary id="branch-lowercase" data-expect="visible">copilot/fix-123</summary>
+  <button id="branch-hyphen" data-expect="visible">Copilot-experiments</button>
+  <button id="long-label" data-expect="visible">Compare how Copilot and other assistants handle this repository setup</button>
+
+  <!-- Content written by users -->
+  <div class="markdown-body">
+    <a href="https://github.com/features/copilot" id="readme-link" data-expect="visible">Copilot docs</a>
+    <a href="/copilot" id="readme-relative-link" data-expect="visible">/copilot</a>
+    <button id="readme-button" data-expect="visible">Ask Copilot</button>
+    <svg class="octicon octicon-copilot" id="readme-icon" data-expect="visible" width="16" height="16"></svg>
+  </div>
+  <div class="comment-body">
+    <button id="comment-button" data-expect="visible">Assign to Copilot</button>
+  </div>
+  <textarea id="editor" data-expect="visible">Ask Copilot</textarea>
+
+  <script>
+    // Runs while the page is still parsing, like GitHub's own scripts.
+    window.__hiddenDuringParse = ["header-copilot-group", "assign-copilot"].map(
+      (id) => !document.getElementById(id).checkVisibility(),
+    );
+  </script>
+</body>
+</html>

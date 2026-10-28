@@ -53,6 +53,24 @@ carregamento e faz duas coisas:
 O GitHub muda a interface com frequência. Quando algo novo do Copilot
 aparecer, adicione o seletor na lista `SELECTORS` em `content.js`.
 
+## Testes
+
+Os testes rodam o `content.js` num Firefox de verdade, sobre uma página que
+reproduz o HTML do GitHub ([tests/fixtures/github.html](tests/fixtures/github.html)).
+Cada elemento da página está marcado com `data-expect="hidden"` ou
+`data-expect="visible"`, e os testes conferem os dois lados. Também cobrem
+conteúdo carregado depois da página, a navegação do Turbo e o liga/desliga.
+
+```sh
+npm install
+npm test
+```
+
+O Firefox é procurado no `PATH`. Para usar outro, defina `FIREFOX_BIN`.
+
+Quando o GitHub mudar a interface, adicione o novo elemento à página de teste
+com `data-expect="hidden"` antes de mexer nos seletores.
+
 ## Instalar para testar
 
 1. Abra `about:debugging#/runtime/this-firefox`.
